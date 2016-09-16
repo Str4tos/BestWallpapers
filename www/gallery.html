@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="favicon.ico">
+    <title>BestWallpapers</title>
+	<link href="css/wallpers.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	<link rel="stylesheet" href="css/lightbox.min.css">
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/nav.js"></script>
+	<script type="text/javascript">
+	var WaCat = "All";
+	var WaSize = "All";
+	var NumPage = 1;
+
+	function ajaxwarpdiv(){
+		var GHref = "php/wallp.php?cat="+WaCat+"&size="+WaSize+'&page='+NumPage;
+			AjaxContent.init({containerDiv:"#ajax-wrap",contentDiv:"#wallps"}).getContent(GHref);
+	}
+	$(function(){
+		$("#wallpcat a").click(function(){
+				WaCat = (this.id);
+				return false;
+		});	
+		$("#wallpsize a").click(function(){
+				WaSize = (this.id);
+				return false;
+		});	
+		$('.list-group-item').click(function(){
+			NumPage = 1;
+			$(this).parent('div').children('.list-group-item').removeClass('active');
+			$(this).addClass('active');
+			ajaxwarpdiv();
+		});
+		$('#nextpage a').click(function(){
+			NumPage++;
+			ajaxwarpdiv();
+		});
+
+	});
+	</script>
+</head>
+
+<body>
+    <nav class="navbar navbar-fixed-top navbar-inverse">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">BestWallpapers</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="index.html">Главная</a></li>
+			  <li class="active"><a href="gallery.html">Галерея</a></li>
+			  <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Категории<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+				<div id="wallpcat" class="list-group">
+					<li><a href="" id="All" class="list-group-item active">Все категории</a></li>
+					<li><a href="" id="Aero" class="list-group-item">Aero</a></li>
+					<li><a href="" id="Animals" class="list-group-item">Животные</a></li>
+					<li><a href="" id="Architecture" class="list-group-item">Архитектура</a></li>
+					<li><a href="" id="Artistic" class="list-group-item">Художественное</a></li>
+					<li><a href="" id="Cartoons" class="list-group-item">Мультфильмы</a></li>
+					<li><a href="" id="Games" class="list-group-item">Игры</a></li>
+					<li><a href="" id="Movies" class="list-group-item">Фильмы</a></li>
+				</div>
+				</ul>
+                </li>
+				<li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Размеры<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+				<div id="wallpsize" class="list-group">
+					<li><a href="" id="All" class="list-group-item active">Любые размеры</a></li>
+					<li><a href="" id="1920x1200" class="list-group-item">1920 x 1200</a></li>
+					<li><a href="" id="1920x1080" class="list-group-item">1920 x 1080</a></li>
+					<li><a href="" id="1600x900" class="list-group-item">1600 x 900</a></li>
+					<li><a href="" id="1280x720" class="list-group-item">1280 x 720</a></li>
+					<li><a href="" id="1024x768" class="list-group-item">1024 x 768</a></li>
+					</div>
+                </ul>
+              </li>
+              <li><a href="insert.html">Добавить</a></li>
+              <li><a href="about.html">О проекте</a></li>
+              
+            </ul>
+        </div><!--/.nav-collapse -->
+    </nav><!-- /.navbar -->
+
+    <div class="container">
+	
+    <div class="row row-offcanvas row-offcanvas-right">
+		<div class="col-xs-12 col-md-9 col-bg-10">
+			<div id="ajax-wrap">
+				<div id="wallps">
+					<!-- ###### CONTENT ###### -->
+					<script type="text/javascript">
+						ajaxwarpdiv();
+					</script>
+				</div>
+			</div>
+		</div>
+        <div class="col-xs-3 col-md-3 col-bg-2 sidebar-offcanvas text-center" id="sidebar">
+		<b>Категории<b>
+			<div id="wallpcat" class="list-group">
+				<a href="" id="All" class="list-group-item active">Все категории</a>
+				<a href="" id="Aero" class="list-group-item">Aero</a>
+				<a href="" id="Animals" class="list-group-item">Животные</a>
+				<a href="" id="Architecture" class="list-group-item">Архитектура</a>
+				<a href="" id="Artistic" class="list-group-item">Художественное</a>
+				<a href="" id="Cartoons" class="list-group-item">Мультфильмы</a>
+				<a href="" id="Games" class="list-group-item">Игры</a>
+				<a href="" id="Movies" class="list-group-item">Фильмы</a>
+				
+			</div>
+			<b>Размеры<b>
+			<div id="wallpsize" class="list-group">
+				<a href="" id="All" class="list-group-item active">Любые размеры</a>
+				<a href="" id="1920x1200" class="list-group-item">1920 x 1200</a>
+				<a href="" id="1920x1080" class="list-group-item">1920 x 1080</a>
+				<a href="" id="1600x900" class="list-group-item">1600 x 900</a>
+				<a href="" id="1280x720" class="list-group-item">1280 x 720</a>
+				<a href="" id="1024x768" class="list-group-item">1024 x 768</a>
+			</div>
+        </div><!--/.sidebar-offcanvas-->
+		
+    </div><!--/row-->
+	<p><div class="col-xs-12 col-md-9" id="nextpage">
+		<center><a class="btn btn-primary" href="#" role="button"><b>Смотреть дальше &raquo;</b></a></center>
+		</div></p>
+
+    <footer>
+		<hr>
+		<p>&copy; 2015 BestWallpapers, Eschenko. <a class="btn btn-default pull-right" href="#" role="button">На верх &uarr;</a></p>
+    </footer>
+</div><!--/.container-->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+    <script src="js/wallpers.js"></script>
+	<script src="js/lightbox-plus-jquery.min.js"></script>
+  </body>
+</html>
